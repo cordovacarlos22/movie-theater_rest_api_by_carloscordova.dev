@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
- // user schema 
+// user schema 
 const userSchema = new mongoose.Schema({
   dni: { type: Number, required: true },
   first_name: { type: String, required: true },
@@ -9,11 +9,12 @@ const userSchema = new mongoose.Schema({
   phone_number: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   isActive: { type: Boolean, default: true },
 },
-{
-  timestamps: true, // timestamp 
-});
+  {
+    timestamps: true, // timestamp 
+  });
 
 
 export default mongoose.model("User", userSchema); // export user schema
