@@ -20,6 +20,9 @@ const ticketSchema = new mongoose.Schema({
   screening_time: { type: String, required: true },
   screening_date: { type: Date, required: true },
   seat: { type: Number, required: true },
+},
+  {
+  timestamps: true, // Adds createdAt and updatedAt fields
 });
 
 export default mongoose.model('Ticket', ticketSchema);

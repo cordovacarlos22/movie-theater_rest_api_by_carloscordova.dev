@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   isActive: { type: Boolean, default: true },
 },
   {
-    timestamps: true, // timestamp 
+    timestamps: true, /// Adds createdAt and updatedAt fields
   });
 
 
