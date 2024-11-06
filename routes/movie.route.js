@@ -4,19 +4,19 @@ import * as movieController from '../controllers/movie.controller.js';
 const movieRouter = express.Router();
 
 // create a movie 
-movieRouter.post('/', movieController.createAMovie);
+movieRouter.post('/movie', movieController.createAMovie);
 
 // get all movies
-movieRouter.get('/', movieController.getAllMovies);
+movieRouter.get('/movie', movieController.getAllMovies);
 
 // get movie by id
-movieRouter.get('/:id', movieController.getMovieByMovieId);
+movieRouter.get('/movie/:id', movieController.getMovieByMovieId);
 
 // update movie by id 
-movieRouter.patch('/:id', movieController.updateMovieById);
+movieRouter.patch('/movie/:id', movieController.updateMovieById);
 
 // delete movie by id
-movieController.delete('/:id', movieController.deleteMovieById);
+movieController.delete('/movie/:id', movieController.deleteMovieById);
 
 
 export default movieRouter;
