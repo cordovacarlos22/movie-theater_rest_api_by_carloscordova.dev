@@ -1,4 +1,4 @@
-import mongoose, { connection } from "mongoose";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -6,14 +6,18 @@ dotenv.config();
 
 // Connect to MongoDB
 
-const connect = () => {
+const connect = async () => {
   try {
 
     mongoose.connect(process.env.DB_CONNECT_URL);
+    const { connection } = await mongoose
+
     connection.once('open', () => {
       console.log('Connected to MongoDB sucessful ✅ ')
 
-      connection.error(err => console.log('Error connecting to MongoDB sucessful ❌ : ', + err))
+      connection.on('error', () => {
+        console.log('Error connecting to MongoDB sucessful ❌')
+      })
 
     });
   } catch (error) {
