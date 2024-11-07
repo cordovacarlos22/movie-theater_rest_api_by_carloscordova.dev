@@ -1,4 +1,4 @@
-import  express from 'express';
+import express from 'express';
 
 import * as movieController from '../controllers/movie.controller.js';
 
@@ -11,13 +11,13 @@ movieRouter.post('/movie', movieController.createAMovie);
 movieRouter.get('/movie', movieController.getAllMovies);
 
 // get movie by id
-movieRouter.get('/movie/:id', movieController.getMovieByMovieId);
+movieRouter.get('/movie/:movieId', movieController.getMovieByMovieId);
 
 // update movie by id 
-movieRouter.patch('/movie/:id', movieController.updateMovieById);
+movieRouter.patch('/movie/:movieId', movieController.updateMovieById);
 
 // delete movie by id
-movieRouter.delete('/movie/:id', movieController.deleteMovieById);
+movieRouter.delete('/movie/:movieId', movieController.deleteMovieById);
 
 
 export default movieRouter;
