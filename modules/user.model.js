@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 // user schema 
 const userSchema = new mongoose.Schema({
-  dni: { type: Number, required: true },
+  dni: { type: Number, required: true, unique: true},
   first_name: { type: String, required: true },
   last_name: { type: String, required: true },
   dob: { type: Date, required: true }, // format: 'YYYY-MM-DD 
