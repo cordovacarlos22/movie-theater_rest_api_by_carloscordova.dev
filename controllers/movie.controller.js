@@ -75,10 +75,17 @@ const getMovieByMovieId = async (req, res) => {
 // update movie 
 
 const updateMovieById = async (req, res) => {
+
+  // Valido que el ID sea un ObjectID de MongoDB (24 caracteres alfanuméricos en hexadecimal)
+  if (!req.params.movieId.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({ message: 'Invalid Movie ID' })
+  }
   try {
-
+    const movie = await Movie.findByIdAndUpdate(req.params.movieId, req.body, { new: true });
+    if (!movie) return res.status(404).json({ message: 'Movie not found' });
+    res.status(200).json(movie);
   } catch (error) {
-
+    res.status(400).json({ message: 'Failed to get update movie ', error: error });
   }
 };
 
