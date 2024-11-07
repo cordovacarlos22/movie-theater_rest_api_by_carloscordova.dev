@@ -5,7 +5,7 @@ import Movie from '../modules/movie.model.js'
 // create a movie 
 const createAMovie = async (req, res) => {
 
-  // validate movie data
+  // validate movie data from request body 
   const {
     title,
     director,
@@ -41,27 +41,23 @@ const createAMovie = async (req, res) => {
     const movie = await Movie.create(req.body);
     res.status(201).json(movie);
   } catch {
-    res.status(400).json({ message: 'Failed to create movie', error: error});
+    res.status(400).json({ message: 'Failed to create movie', error: error });
   }
 };
 
 // get all movies
 const getAllMovies = async (req, res) => {
-
-  
   try {
-
+    const movies = await Movie.find({ is_available: true });
+    if (!movies) return res.status(404).json({ message: 'Not Movies Found' });
+    res.status(200).json(movies);
   } catch (error) {
-
+    res.status(400).json({ message: 'Failed to get movies', error: error });
   }
 };
 // get movie by id 
 const getMovieByMovieId = async (req, res) => {
-  try {
-
-  } catch (error) {
-
-  }
+ 
 }
 
 // update movie 
