@@ -57,7 +57,19 @@ const getAllMovies = async (req, res) => {
 };
 // get movie by id 
 const getMovieByMovieId = async (req, res) => {
- 
+  // Valido que el ID sea un ObjectID de MongoDB (24 caracteres alfanuméricos en hexadecimal)
+  if (!req.params.movieId.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({ message: 'Invalid Movie ID' })
+  }
+
+  try {
+    const movie = await Movie.find({ _id: req.params.movieId, is_available: true });
+    if (!movie) return res.status(404).json({ message: 'Movie not found' });
+    res.status(200).json(movie);
+
+  } catch (error) {
+    res.status(404).json({ message: 'Failed to get movie by id', error: error });
+  }
 }
 
 // update movie 
