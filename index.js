@@ -13,7 +13,7 @@ const app = express();
 
 // routes 
 app.use(express.json());; // configuration to use json 
-// app.use('/api/v1', userRoutes);
+app.use('/api/v1', userRoutes);
 app.use('/api/v1', movieRoute);
 
 // Connect to MongoDB
