@@ -44,13 +44,13 @@ const loginUser = async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ email, username});
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(400).json({ message: 'Process failed: Email or Password error' })
     }
     const pepper = process.env.SECRET_KEY
-    
+
     const match = await bcrypt.compare(password + pepper, user.password);
 
     if (!match) {
