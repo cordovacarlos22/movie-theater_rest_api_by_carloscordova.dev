@@ -1,8 +1,9 @@
 import express from "express";
 import { connect } from './config/db.js'
 import dotenv from "dotenv";
-import userRoutes from './routes/user.route.js'
-import movieRoute from './routes/movie.route.js'
+import userRoutes from './routes/user.route.js';
+import movieRoute from './routes/movie.route.js';
+import authRoutes from './routes/auth.route.js';
 
 dotenv.config();
 
@@ -13,6 +14,8 @@ const app = express();
 
 // routes 
 app.use(express.json());; // configuration to use json 
+
+app.use('/api/v1', authRoutes); // auth routes
 app.use('/api/v1', userRoutes);
 app.use('/api/v1', movieRoute);
 
