@@ -4,11 +4,6 @@ import * as userController from '../controllers/user.auth.controller.js';
 
 const userRoutes = express.Router();
 
-// Create a new user
-userRoutes.post('/user/register', userController.registerUser);
-
-// login user 
-userRoutes.post('/user/login', userController.loginUser);
 
 // Get all users
 userRoutes.get('/user/', userController.getAllUsers);
