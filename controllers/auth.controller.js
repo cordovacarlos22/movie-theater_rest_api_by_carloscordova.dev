@@ -50,6 +50,7 @@ const loginUser = async (req, res) => {
       return res.status(400).json({ message: 'Process failed: Email or Password error' })
     }
     const pepper = process.env.SECRET_KEY
+    
     const match = await bcrypt.compare(password + pepper, user.password);
 
     if (!match) {
