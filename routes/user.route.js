@@ -9,12 +9,12 @@ const userRoutes = express.Router();
 userRoutes.get('/user/', userController.getAllUsers);
 
 // Get user by id 
-userRoutes.get('/user/:id', userController.getUserById);
+userRoutes.get('/user/:userId', userController.getUserById);
 
 // Update user by id
-userRoutes.patch('/user/:id', userController.updateUser);
+userRoutes.patch('/user/:userId', userController.updateUser);
 
 // Delete user by id with hard delete operation and soft delete operation
-userRoutes.delete('/user/:id', userController.deleteUser);
+userRoutes.delete('/user/:userId', userController.deleteUser);
 
 export default userRoutes;
